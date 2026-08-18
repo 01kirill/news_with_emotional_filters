@@ -1,6 +1,7 @@
 RSS_FEEDS = [
-    "https://lenta.ru/rss/news",
+    "https://www.kommersant.ru/RSS/news.xml",
     "https://habr.com/ru/rss/all/",
+    "https://3dnews.ru/news/rss/",
 ]
 
 MOOD_PROMPTS = {
