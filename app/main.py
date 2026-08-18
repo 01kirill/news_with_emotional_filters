@@ -1,12 +1,22 @@
 from contextlib import asynccontextmanager
 from typing import List
 
-from fastapi import Depends, FastAPI, HTTPException, Query
+from fastapi import (
+    Depends,
+    FastAPI,
+    HTTPException,
+    Query,
+)
 
 from sqlalchemy.orm import Session
 
 from app.core.constants import MOOD_PROMPTS
-from app.core.database import Base, engine, get_db
+from app.core.database import (
+    Base,
+    engine,
+    get_db,
+    SessionLocal,
+)
 from app.models.news import News
 from app.models.rewritten_news import RewrittenNews
 from app.parser import parse_and_save_news
@@ -18,9 +28,12 @@ from app.services.ai_service import rewrite_news_with_ai
 async def lifespan(app: FastAPI):
     Base.metadata.create_all(bind=engine)
 
-    db = SessionLocal = next(get_db())
-    if db.query(News).count() == 0:
-        parse_and_save_news()
+    db = SessionLocal()
+    try:
+        if db.query(News).count() == 0:
+            parse_and_save_news()
+    finally:
+        db.close()
 
     yield
 
