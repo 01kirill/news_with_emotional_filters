@@ -1,0 +1,32 @@
+.news-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.modal-body {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+    .responsive-border {
+        border-right: 1px solid #dee2e6;
+    }
+}
+@media (max-width: 767px) {
+    .responsive-border {
+        border-bottom: 1px solid #dee2e6;
+    }
+}

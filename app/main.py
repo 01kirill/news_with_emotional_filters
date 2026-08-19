@@ -3,10 +3,13 @@ from typing import List
 
 from fastapi import (
     Depends,
+    Request,
     FastAPI,
     HTTPException,
     Query,
 )
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 
 from sqlalchemy.orm import Session
 
@@ -39,6 +42,16 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="News Mood App", lifespan=lifespan)
+
+
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+
+templates = Jinja2Templates(directory="app/templates")
+
+
+@app.get("/", include_in_schema=False)
+def render_index(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
 @app.get("/api/news", response_model=List[NewsResponse])

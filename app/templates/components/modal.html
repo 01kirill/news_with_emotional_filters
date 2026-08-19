@@ -1,0 +1,62 @@
+<div class="modal fade" id="newsModal" tabindex="-1" aria-labelledby="newsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="modal-title">Заголовок новости</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+
+            <div class="modal-body p-0">
+                <div class="row g-0 h-100">
+
+                    <div class="col-md-6 p-4 bg-light responsive-border">
+                        <span class="badge bg-secondary mb-2">Оригинал</span>
+                        <div id="modal-original-text" class="text-muted mt-2" style="white-space: pre-line;">
+                            Оригинальный текст...
+                        </div>
+                        <div class="mt-4">
+                            <a id="modal-source-link" href="#" target="_blank" class="btn btn-sm btn-outline-secondary">
+                                Читать источник
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 p-4">
+                        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center mb-4 gap-3">
+
+                            <div class="d-flex flex-wrap gap-2" id="mood-buttons">
+                                <input type="radio" class="btn-check mood-btn" name="mood" id="btn-joy" value="joy">
+                                <label class="btn btn-outline-success btn-sm" for="btn-joy">Радостно</label>
+
+                                <input type="radio" class="btn-check mood-btn" name="mood" id="btn-sad" value="sad">
+                                <label class="btn btn-outline-primary btn-sm" for="btn-sad">Грустно</label>
+
+                                <input type="radio" class="btn-check mood-btn" name="mood" id="btn-irony" value="irony">
+                                <label class="btn btn-outline-warning btn-sm" for="btn-irony">Иронично</label>
+
+                                <input type="radio" class="btn-check mood-btn" name="mood" id="btn-neutral" value="neutral">
+                                <label class="btn btn-outline-secondary btn-sm" for="btn-neutral">Нейтрально</label>
+                            </div>
+
+                            <button id="regenerate-btn" class="btn btn-sm btn-outline-dark d-none">
+                                Перегенерировать
+                            </button>
+                        </div>
+
+                        <div id="modal-ai-content" class="position-relative" style="min-height: 200px;">
+                            <div class="alert alert-secondary text-center" id="ai-placeholder">
+                                Выберите стиль текста выше
+                            </div>
+                            <div id="ai-loader" class="text-center mt-5 d-none">
+                                <div class="spinner-grow text-primary" role="status"></div>
+                                <p class="mt-2 text-muted">Нейросеть переписывает текст...</p>
+                            </div>
+                            <div id="modal-rewritten-text" class="d-none fs-5" style="white-space: pre-line;"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
